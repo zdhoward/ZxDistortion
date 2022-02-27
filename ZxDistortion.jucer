@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<JUCERPROJECT id="L7La73" name="ZxDistortion" projectType="audioplug" useAppConfig="0"
+              displaySplashScreen="1" jucerFormatVersion="1" companyName="ZxTools"
+              pluginManufacturerCode="Zdsp" pluginCode="Zdst" pluginVST3Category="Distortion,Fx"
+              pluginAAXCategory="8192" cppLanguageStandard="17">
+  <MAINGROUP id="K3H8Ya" name="ZxDistortion">
+    <GROUP id="{9BE97C8F-1685-B49A-6C7C-7CE571B2DC75}" name="Images">
+      <FILE id="fVnHTY" name="seamless-cube-lines.png" compile="0" resource="1"
+            file="../Shared Resources/Backgrounds/seamless-cube-lines.png"/>
+    </GROUP>
+    <GROUP id="{E97F03AC-4278-6378-D9F0-0331996C5950}" name="LookAndFeel">
+      <FILE id="eM7B7N" name="ColourPalette.h" compile="0" resource="0" file="../Shared Resources/Library/ColourPalette.h"/>
+      <FILE id="IU8DO2" name="ZxLookAndFeel.cpp" compile="1" resource="0"
+            file="../Shared Resources/Library/ZxLookAndFeel.cpp"/>
+      <FILE id="pOevDE" name="ZxLookAndFeel.h" compile="0" resource="0" file="../Shared Resources/Library/ZxLookAndFeel.h"/>
+    </GROUP>
+    <GROUP id="{6FF83B7D-8C80-FC2A-1254-621D7961A5FA}" name="Fonts">
+      <FILE id="NbR38v" name="BlackgroundsRegular.ttf" compile="0" resource="1"
+            file="../Shared Resources/Fonts/BlackgroundsRegular.ttf"/>
+      <FILE id="Ql3CWs" name="Ubuntu-Bold.ttf" compile="0" resource="1" file="../Shared Resources/Fonts/UbuntuCondensed/Ubuntu-Bold.ttf"/>
+      <FILE id="sDRTji" name="Ubuntu-Italic.ttf" compile="0" resource="1"
+            file="../Shared Resources/Fonts/UbuntuCondensed/Ubuntu-Italic.ttf"/>
+      <FILE id="dFRpGN" name="Ubuntu-Regular.ttf" compile="0" resource="1"
+            file="../Shared Resources/Fonts/UbuntuCondensed/Ubuntu-Regular.ttf"/>
+    </GROUP>
+    <GROUP id="{CD7B5771-5F5C-DFD2-F170-AC297956D5DA}" name="Source">
+      <FILE id="ijkfjn" name="PluginProcessor.cpp" compile="1" resource="0"
+            file="Source/PluginProcessor.cpp"/>
+      <FILE id="oZucmv" name="PluginProcessor.h" compile="0" resource="0"
+            file="Source/PluginProcessor.h"/>
+      <FILE id="BhcUA4" name="PluginEditor.cpp" compile="1" resource="0"
+            file="Source/PluginEditor.cpp"/>
+      <FILE id="erevz4" name="PluginEditor.h" compile="0" resource="0" file="Source/PluginEditor.h"/>
+    </GROUP>
+  </MAINGROUP>
+  <JUCEOPTIONS JUCE_STRICT_REFCOUNTEDPOINTER="1" JUCE_VST3_CAN_REPLACE_VST2="0"/>
+  <EXPORTFORMATS>
+    <VS2022 targetFolder="Builds/VisualStudio2022">
+      <CONFIGURATIONS>
+        <CONFIGURATION isDebug="1" name="Debug" targetName="ZxDistortion" enablePluginBinaryCopyStep="1"
+                       vst3BinaryLocation="D:\Beatz\VSTs\VST3\ZxTools\Suite"/>
+        <CONFIGURATION isDebug="0" name="Release" targetName="ZxDistortion"/>
+      </CONFIGURATIONS>
+      <MODULEPATHS>
+        <MODULEPATH id="juce_audio_basics" path="../../../modules"/>
+        <MODULEPATH id="juce_audio_devices" path="../../../modules"/>
+        <MODULEPATH id="juce_audio_formats" path="../../../modules"/>
+        <MODULEPATH id="juce_audio_plugin_client" path="../../../modules"/>
+        <MODULEPATH id="juce_audio_processors" path="../../../modules"/>
+        <MODULEPATH id="juce_audio_utils" path="../../../modules"/>
+        <MODULEPATH id="juce_core" path="../../../modules"/>
+        <MODULEPATH id="juce_data_structures" path="../../../modules"/>
+        <MODULEPATH id="juce_events" path="../../../modules"/>
+        <MODULEPATH id="juce_graphics" path="../../../modules"/>
+        <MODULEPATH id="juce_gui_basics" path="../../../modules"/>
+        <MODULEPATH id="juce_gui_extra" path="../../../modules"/>
+        <MODULEPATH id="juce_dsp" path="../../../modules"/>
+      </MODULEPATHS>
+    </VS2022>
+  </EXPORTFORMATS>
+  <MODULES>
+    <MODULE id="juce_audio_basics" showAllCode="1" useLocalCopy="0" useGlobalPath="1"/>
+    <MODULE id="juce_audio_devices" showAllCode="1" useLocalCopy="0" useGlobalPath="1"/>
+    <MODULE id="juce_audio_formats" showAllCode="1" useLocalCopy="0" useGlobalPath="1"/>
+    <MODULE id="juce_audio_plugin_client" showAllCode="1" useLocalCopy="0"
+            useGlobalPath="1"/>
+    <MODULE id="juce_audio_processors" showAllCode="1" useLocalCopy="0" useGlobalPath="1"/>
+    <MODULE id="juce_audio_utils" showAllCode="1" useLocalCopy="0" useGlobalPath="1"/>
+    <MODULE id="juce_core" showAllCode="1" useLocalCopy="0" useGlobalPath="1"/>
+    <MODULE id="juce_data_structures" showAllCode="1" useLocalCopy="0" useGlobalPath="1"/>
+    <MODULE id="juce_dsp" showAllCode="1" useLocalCopy="0" useGlobalPath="1"/>
+    <MODULE id="juce_events" showAllCode="1" useLocalCopy="0" useGlobalPath="1"/>
+    <MODULE id="juce_graphics" showAllCode="1" useLocalCopy="0" useGlobalPath="1"/>
+    <MODULE id="juce_gui_basics" showAllCode="1" useLocalCopy="0" useGlobalPath="1"/>
+    <MODULE id="juce_gui_extra" showAllCode="1" useLocalCopy="0" useGlobalPath="1"/>
+  </MODULES>
+</JUCERPROJECT>
