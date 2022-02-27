@@ -19,6 +19,7 @@ ZxDistortionAudioProcessorEditor::ZxDistortionAudioProcessorEditor(ZxDistortionA
     blendKnobAttachment(audioProcessor.apvts, "Blend", blendKnob),
     gainKnobAttachment(audioProcessor.apvts, "Gain", gainKnob)
 {
+    lnf.setTheme(Themes::InkPink);
     setLookAndFeel(&lnf);
 
     img = ImageCache::getFromMemory(BinaryData::seamlesscubelines_png, BinaryData::seamlesscubelines_pngSize);
@@ -30,13 +31,13 @@ ZxDistortionAudioProcessorEditor::ZxDistortionAudioProcessorEditor(ZxDistortionA
     pluginName.setFont(fontTitle);
     pluginName.setText("ZxTools", NotificationType::dontSendNotification);
     pluginName.setJustificationType(Justification::centredLeft);
-    pluginName.setColour(pluginName.textColourId, ZxLookAndFeel::getPluginNameColour());
+    pluginName.setColour(pluginName.textColourId, lnf.theme.compFace);
 
     addAndMakeVisible(title);
     title.setFont(fontTitle);
     title.setText("Distortion", NotificationType::dontSendNotification);
     title.setJustificationType(Justification::centredLeft);
-    title.setColour(title.textColourId, ZxLookAndFeel::getTitleColour());
+    title.setColour(title.textColourId, lnf.theme.compHighlight);
 
     addAndMakeVisible(knobGroup);
     //knobGroup.setName("KNOBS");
@@ -75,7 +76,7 @@ ZxDistortionAudioProcessorEditor::~ZxDistortionAudioProcessorEditor()
 void ZxDistortionAudioProcessorEditor::paint (juce::Graphics& g)
 {
     // (Our component is opaque, so we must completely fill the background with a solid colour)
-    g.setColour(ZxLookAndFeel::getBGColour());
+    g.setColour(lnf.theme.bgMain);
     g.fillAll();
 
     Rectangle<float> r = Rectangle<float>(0.f, 0.f, (float)getWidth(), (float)getHeight());
