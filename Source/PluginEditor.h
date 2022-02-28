@@ -11,6 +11,7 @@
 #include <JuceHeader.h>
 #include "PluginProcessor.h"
 #include "../../Shared Resources/Library/ZxLookAndFeel.h"
+#include "../../Shared Resources/Library/Components/PresetsBar.h"
 
 //==============================================================================
 /**
@@ -32,6 +33,10 @@ private:
 
     ZxLookAndFeel lnf;
 
+    
+
+    PresetsBar presetsBar;
+
     Image img;
 
     Label pluginName;
@@ -50,6 +55,8 @@ private:
     APVTS::SliderAttachment rangeKnobAttachment;
     APVTS::SliderAttachment blendKnobAttachment;
     APVTS::SliderAttachment gainKnobAttachment;
+
+    //APVTS::ButtonAttachment prevPresetButtonAttachment;
 
     JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (ZxDistortionAudioProcessorEditor)
 };

@@ -9,6 +9,7 @@
 #pragma once
 
 #include <JuceHeader.h>
+#include "../../Shared Resources/Library/PresetManager.h"
 
 namespace Params
 {
@@ -89,7 +90,11 @@ public:
     APVTS::ParameterLayout createParameterLayout();
     APVTS apvts{ *this, nullptr, "Parameters", createParameterLayout() };
 
+    PresetManager& getPresetManager() { return *presetManager;  }
+
 private:
+    std::unique_ptr<PresetManager> presetManager;
+
     AudioParameterFloat* drive;
     AudioParameterFloat* range;
     AudioParameterFloat* blend;

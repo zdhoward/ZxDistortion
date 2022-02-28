@@ -22,6 +22,11 @@ ZxDistortionAudioProcessor::ZxDistortionAudioProcessor()
                        )
 #endif
 {
+    apvts.state.setProperty(PresetManager::presetNameProperty, "", nullptr);
+    apvts.state.setProperty("version", ProjectInfo::versionString, nullptr);
+
+    presetManager = std::make_unique<PresetManager>(apvts);
+
     using namespace Params;
     const auto& params = GetParams();
 
