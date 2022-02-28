@@ -56,7 +56,5 @@ private:
     APVTS::SliderAttachment blendKnobAttachment;
     APVTS::SliderAttachment gainKnobAttachment;
 
-    //APVTS::ButtonAttachment prevPresetButtonAttachment;
-
     JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (ZxDistortionAudioProcessorEditor)
 };
