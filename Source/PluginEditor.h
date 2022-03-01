@@ -41,6 +41,8 @@ private:
     Label pluginName;
     Label title;
 
+    Label pluginVersion;
+
     GroupComponent knobGroup;
 
     Slider driveKnob;

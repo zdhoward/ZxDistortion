@@ -66,6 +66,12 @@ ZxDistortionAudioProcessorEditor::ZxDistortionAudioProcessorEditor(ZxDistortionA
     gainKnob.setSliderStyle(Slider::RotaryHorizontalVerticalDrag);
     gainKnob.setTextValueSuffix("dB");
 
+    addAndMakeVisible(pluginVersion);
+    String vStr = ProjectInfo::versionString;
+    pluginVersion.setText("Version: " + vStr, NotificationType::dontSendNotification);
+    pluginVersion.setJustificationType(Justification::topRight);
+    pluginVersion.setColour(pluginVersion.textColourId, lnf.theme.mainText);
+
     
 
     // Make sure that before the constructor has finished, you've set the
@@ -97,6 +103,9 @@ void ZxDistortionAudioProcessorEditor::resized()
     // This is generally where you'll want to lay out the positions of any
     // subcomponents in your editor..
     auto bounds = getLocalBounds();
+
+    auto pluginVersionBounds = Rectangle<int>(0,0,getWidth(), 30);
+    pluginVersion.setBounds(pluginVersionBounds);
 
     auto presetBounds = bounds.removeFromBottom(30);
     presetsBar.setBounds(presetBounds);

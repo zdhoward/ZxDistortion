@@ -40,6 +40,7 @@ ZxDistortionAudioProcessor::ZxDistortionAudioProcessor()
     floatHelper(range, Names::Range);
     floatHelper(blend, Names::Blend);
     floatHelper(gain, Names::Gain);
+
 }
 
 ZxDistortionAudioProcessor::~ZxDistortionAudioProcessor()
