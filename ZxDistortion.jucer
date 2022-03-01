@@ -7,21 +7,24 @@
   <MAINGROUP id="K3H8Ya" name="ZxDistortion">
     <GROUP id="{033A87A6-A2F8-A154-B638-0604473A0695}" name="Components">
       <FILE id="uPqill" name="PresetsBar.h" compile="0" resource="0" file="../Shared Resources/Library/Components/PresetsBar.h"/>
+      <FILE id="E0LZDb" name="SettingsPanel.h" compile="0" resource="0" file="../Shared Resources/Library/Components/SettingsPanel.h"/>
     </GROUP>
     <GROUP id="{F45F2D44-F257-CC46-4D12-C0474165BA50}" name="Services">
-      <FILE id="KWXAjF" name="PresetManager.cpp" compile="1" resource="0"
-            file="../Shared Resources/Library/PresetManager.cpp"/>
-      <FILE id="kyzJi0" name="PresetManager.h" compile="0" resource="0" file="../Shared Resources/Library/PresetManager.h"/>
+      <FILE id="pEuZVF" name="PresetManager.cpp" compile="1" resource="0"
+            file="../Shared Resources/Library/Services/PresetManager.cpp"/>
+      <FILE id="Qq6gEw" name="PresetManager.h" compile="0" resource="0" file="../Shared Resources/Library/Services/PresetManager.h"/>
     </GROUP>
     <GROUP id="{9BE97C8F-1685-B49A-6C7C-7CE571B2DC75}" name="Images">
       <FILE id="fVnHTY" name="seamless-cube-lines.png" compile="0" resource="1"
             file="../Shared Resources/Backgrounds/seamless-cube-lines.png"/>
+      <FILE id="TzKp7m" name="settings-icon.png" compile="0" resource="1"
+            file="../Shared Resources/Icons/settings-icon.png"/>
     </GROUP>
     <GROUP id="{E97F03AC-4278-6378-D9F0-0331996C5950}" name="LookAndFeel">
-      <FILE id="eM7B7N" name="ColourPalette.h" compile="0" resource="0" file="../Shared Resources/Library/ColourPalette.h"/>
-      <FILE id="IU8DO2" name="ZxLookAndFeel.cpp" compile="1" resource="0"
-            file="../Shared Resources/Library/ZxLookAndFeel.cpp"/>
-      <FILE id="pOevDE" name="ZxLookAndFeel.h" compile="0" resource="0" file="../Shared Resources/Library/ZxLookAndFeel.h"/>
+      <FILE id="ktTsV6" name="ColourPalette.h" compile="0" resource="0" file="../Shared Resources/Library/LookAndFeel/ColourPalette.h"/>
+      <FILE id="LUOhrn" name="ZxLookAndFeel.cpp" compile="1" resource="0"
+            file="../Shared Resources/Library/LookAndFeel/ZxLookAndFeel.cpp"/>
+      <FILE id="qrk96P" name="ZxLookAndFeel.h" compile="0" resource="0" file="../Shared Resources/Library/LookAndFeel/ZxLookAndFeel.h"/>
     </GROUP>
     <GROUP id="{6FF83B7D-8C80-FC2A-1254-621D7961A5FA}" name="Fonts">
       <FILE id="NbR38v" name="BlackgroundsRegular.ttf" compile="0" resource="1"

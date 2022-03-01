@@ -9,7 +9,7 @@
 #pragma once
 
 #include <JuceHeader.h>
-#include "../../Shared Resources/Library/PresetManager.h"
+#include "../../Shared Resources/Library/Services/PresetManager.h"
 
 namespace Params
 {
@@ -91,6 +91,9 @@ public:
     APVTS apvts{ *this, nullptr, "Parameters", createParameterLayout() };
 
     PresetManager& getPresetManager() { return *presetManager;  }
+
+    int getSavedTheme();
+    int themeToLoad{ 0 };
 
 private:
     std::unique_ptr<PresetManager> presetManager;

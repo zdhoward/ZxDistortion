@@ -12,14 +12,25 @@
 //==============================================================================
 ZxDistortionAudioProcessorEditor::ZxDistortionAudioProcessorEditor(ZxDistortionAudioProcessor& p)
     : AudioProcessorEditor(&p), audioProcessor(p),
+    lnf(audioProcessor.apvts),
     driveKnobAttachment(audioProcessor.apvts, "Drive", driveKnob),
     rangeKnobAttachment(audioProcessor.apvts, "Range", rangeKnob),
     blendKnobAttachment(audioProcessor.apvts, "Blend", blendKnob),
     gainKnobAttachment(audioProcessor.apvts, "Gain", gainKnob),
 
-    presetsBar(p.getPresetManager(), lnf.theme)
+    presetsBar(p.getPresetManager(), lnf, *this)
 {
-    lnf.setTheme(Themes::InkPink);
+    //int themeId = (int)audioProcessor.apvts.getRawParameterValue("Theme");
+    //int themeId = (int)audioProcessor.apvts.getRawParameterValue("Theme")->load();
+    int themeId = p.getSavedTheme();//p.apvts.state.getProperty("Theme");
+    DBG("Editor ThemeID: " << themeId);
+    DBG("Editor ThemeID: " << GetThemes().at((Themes)themeId));
+
+    //auto paramVal = audioProcessor.//p.apvts.getRawParameterValue("Gain")->load();
+    //DBG("paramVal: " << paramVal);
+
+    //lnf.setTheme(Themes::LemonLime);
+    lnf.setTheme((Themes)themeId);
     setLookAndFeel(&lnf);
 
     PresetManager& pm = p.getPresetManager();
@@ -35,13 +46,13 @@ ZxDistortionAudioProcessorEditor::ZxDistortionAudioProcessorEditor(ZxDistortionA
     pluginName.setFont(fontTitle);
     pluginName.setText("ZxTools", NotificationType::dontSendNotification);
     pluginName.setJustificationType(Justification::centredLeft);
-    pluginName.setColour(pluginName.textColourId, lnf.theme.compFace);
+    //pluginName.setColour(pluginName.textColourId, lnf.theme.compFace);
 
     addAndMakeVisible(title);
     title.setFont(fontTitle);
     title.setText("Distortion", NotificationType::dontSendNotification);
     title.setJustificationType(Justification::centredLeft);
-    title.setColour(title.textColourId, lnf.theme.compHighlight);
+    //title.setColour(title.textColourId, lnf.theme.compHighlight);
 
     addAndMakeVisible(knobGroup);
     //knobGroup.setName("KNOBS");
@@ -66,6 +77,8 @@ ZxDistortionAudioProcessorEditor::ZxDistortionAudioProcessorEditor(ZxDistortionA
     gainKnob.setSliderStyle(Slider::RotaryHorizontalVerticalDrag);
     gainKnob.setTextValueSuffix("dB");
 
+    
+
     // Make sure that before the constructor has finished, you've set the
     // editor's size to whatever you need it to be.
     setSize (500, 280);
@@ -86,6 +99,13 @@ void ZxDistortionAudioProcessorEditor::paint (juce::Graphics& g)
     //Rectangle<float> r = Rectangle<float>(0.f, 0.f, (float)getWidth(), (float)getHeight());
     g.setTiledImageFill(img,0, 0, .1f);
     g.fillAll();
+
+    pluginName.setColour(pluginName.textColourId, lnf.theme.compFace);
+    title.setColour(title.textColourId, lnf.theme.compHighlight);
+
+    //int themeId = (int)audioProcessor.apvts.getParameter("Theme");
+    //DBG("ThemeID: " << themeId);
+    //lnf.setTheme((Themes)themeId);
 }
 
 void ZxDistortionAudioProcessorEditor::resized()

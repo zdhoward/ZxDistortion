@@ -10,8 +10,9 @@
 
 #include <JuceHeader.h>
 #include "PluginProcessor.h"
-#include "../../Shared Resources/Library/ZxLookAndFeel.h"
+#include "../../Shared Resources/Library/LookAndFeel/ZxLookAndFeel.h"
 #include "../../Shared Resources/Library/Components/PresetsBar.h"
+
 
 //==============================================================================
 /**
@@ -32,8 +33,6 @@ private:
     ZxDistortionAudioProcessor& audioProcessor;
 
     ZxLookAndFeel lnf;
-
-    
 
     PresetsBar presetsBar;
 
