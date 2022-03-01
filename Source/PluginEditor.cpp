@@ -20,16 +20,8 @@ ZxDistortionAudioProcessorEditor::ZxDistortionAudioProcessorEditor(ZxDistortionA
 
     presetsBar(p.getPresetManager(), lnf, *this)
 {
-    //int themeId = (int)audioProcessor.apvts.getRawParameterValue("Theme");
-    //int themeId = (int)audioProcessor.apvts.getRawParameterValue("Theme")->load();
-    int themeId = p.getSavedTheme();//p.apvts.state.getProperty("Theme");
-    DBG("Editor ThemeID: " << themeId);
-    DBG("Editor ThemeID: " << GetThemes().at((Themes)themeId));
+    int themeId = p.getSavedTheme();
 
-    //auto paramVal = audioProcessor.//p.apvts.getRawParameterValue("Gain")->load();
-    //DBG("paramVal: " << paramVal);
-
-    //lnf.setTheme(Themes::LemonLime);
     lnf.setTheme((Themes)themeId);
     setLookAndFeel(&lnf);
 
@@ -46,16 +38,13 @@ ZxDistortionAudioProcessorEditor::ZxDistortionAudioProcessorEditor(ZxDistortionA
     pluginName.setFont(fontTitle);
     pluginName.setText("ZxTools", NotificationType::dontSendNotification);
     pluginName.setJustificationType(Justification::centredLeft);
-    //pluginName.setColour(pluginName.textColourId, lnf.theme.compFace);
 
     addAndMakeVisible(title);
     title.setFont(fontTitle);
     title.setText("Distortion", NotificationType::dontSendNotification);
     title.setJustificationType(Justification::centredLeft);
-    //title.setColour(title.textColourId, lnf.theme.compHighlight);
 
     addAndMakeVisible(knobGroup);
-    //knobGroup.setName("KNOBS");
 
     addAndMakeVisible(driveKnob);
     driveKnob.setName("DRIVE");
@@ -96,16 +85,11 @@ void ZxDistortionAudioProcessorEditor::paint (juce::Graphics& g)
     g.setColour(lnf.theme.bgMain);
     g.fillAll();
 
-    //Rectangle<float> r = Rectangle<float>(0.f, 0.f, (float)getWidth(), (float)getHeight());
     g.setTiledImageFill(img,0, 0, .1f);
     g.fillAll();
 
     pluginName.setColour(pluginName.textColourId, lnf.theme.compFace);
     title.setColour(title.textColourId, lnf.theme.compHighlight);
-
-    //int themeId = (int)audioProcessor.apvts.getParameter("Theme");
-    //DBG("ThemeID: " << themeId);
-    //lnf.setTheme((Themes)themeId);
 }
 
 void ZxDistortionAudioProcessorEditor::resized()

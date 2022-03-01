@@ -188,7 +188,7 @@ void ZxDistortionAudioProcessor::processBlock (juce::AudioBuffer<float>& buffer,
 
             *channelData *= settings.drive * settings.range;
 
-            *channelData = ((2.f / float_Pi) * atan(*channelData)); //* settings.blend))); // + (cleanSignal * (1.f - settings.blend))) / 2
+            *channelData = ((2.f / float_Pi) * atan(*channelData));
 
             channelData++;
         }
@@ -227,7 +227,6 @@ void ZxDistortionAudioProcessor::getStateInformation (juce::MemoryBlock& destDat
     apvts.state.writeToStream(mos);
 
     int themeId = (int)apvts.state.getProperty("Theme");
-    DBG("getState ThemeID: " << themeId);
 }
 
 void ZxDistortionAudioProcessor::setStateInformation (const void* data, int sizeInBytes)
@@ -239,19 +238,8 @@ void ZxDistortionAudioProcessor::setStateInformation (const void* data, int size
     {
         apvts.replaceState(tree);
     }
-    //else {
-    //    DBG("!!! APVTS TREE IS INVALID !!!");
-    //}
-    int themeId = (int)apvts.state.getProperty("Theme");
-    DBG("setState apvts ThemeID: " << themeId);
-    DBG("setState apvts ThemeName: " << GetThemes().at((Themes)themeId));
-    themeToLoad = themeId;
 
-    //int themeId = (int)audioProcessor.apvts.getParameter("Theme");
-    //DBG("ThemeID: " << themeId);
-    //lnf.setTheme((Themes)themeId);
-
-
+    themeToLoad = (int)apvts.state.getProperty("Theme");
 }
 
 AudioProcessorValueTreeState::ParameterLayout ZxDistortionAudioProcessor::createParameterLayout() {
