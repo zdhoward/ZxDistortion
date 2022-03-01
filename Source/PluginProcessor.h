@@ -94,6 +94,8 @@ public:
 
     int getSavedTheme();
     int themeToLoad{ 0 };
+    //int getSavedOversampling();
+    int oversamplingToLoad{ 0 };
 
 private:
     std::unique_ptr<PresetManager> presetManager;

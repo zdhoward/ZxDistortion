@@ -18,7 +18,7 @@ ZxDistortionAudioProcessorEditor::ZxDistortionAudioProcessorEditor(ZxDistortionA
     blendKnobAttachment(audioProcessor.apvts, "Blend", blendKnob),
     gainKnobAttachment(audioProcessor.apvts, "Gain", gainKnob),
 
-    presetsBar(p.getPresetManager(), lnf, *this)
+    presetsBar(p.getPresetManager(), lnf, *this, audioProcessor.apvts)
 {
     int themeId = p.getSavedTheme();
 
