@@ -69,7 +69,6 @@ ZxDistortionAudioProcessorEditor::ZxDistortionAudioProcessorEditor(ZxDistortionA
     String vStr = ProjectInfo::versionString;
     pluginVersion.setText("Version: " + vStr, NotificationType::dontSendNotification);
     pluginVersion.setJustificationType(Justification::topRight);
-    pluginVersion.setColour(pluginVersion.textColourId, theme.textMain);
 
     
 
@@ -97,6 +96,8 @@ void ZxDistortionAudioProcessorEditor::paint (juce::Graphics& g)
 
     pluginName.setColour(pluginName.textColourId, theme.compFace);
     title.setColour(title.textColourId, theme.compHighlight);
+
+    pluginVersion.setColour(pluginVersion.textColourId, theme.textMain);
 }
 
 void ZxDistortionAudioProcessorEditor::resized()
