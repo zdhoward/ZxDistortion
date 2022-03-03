@@ -13,6 +13,7 @@
       <FILE id="pEuZVF" name="PresetManager.cpp" compile="1" resource="0"
             file="../Shared Resources/Library/Services/PresetManager.cpp"/>
       <FILE id="Qq6gEw" name="PresetManager.h" compile="0" resource="0" file="../Shared Resources/Library/Services/PresetManager.h"/>
+      <FILE id="LkYKVq" name="ThemeManager.h" compile="0" resource="0" file="../Shared Resources/Library/Services/ThemeManager.h"/>
     </GROUP>
     <GROUP id="{9BE97C8F-1685-B49A-6C7C-7CE571B2DC75}" name="Images">
       <FILE id="fVnHTY" name="seamless-cube-lines.png" compile="0" resource="1"

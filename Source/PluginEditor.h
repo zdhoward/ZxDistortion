@@ -12,6 +12,7 @@
 #include "PluginProcessor.h"
 #include "../../Shared Resources/Library/LookAndFeel/ZxLookAndFeel.h"
 #include "../../Shared Resources/Library/Components/PresetsBar.h"
+#include "../../Shared Resources/Library/Services/ThemeManager.h"
 
 
 //==============================================================================

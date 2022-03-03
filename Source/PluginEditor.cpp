@@ -20,9 +20,8 @@ ZxDistortionAudioProcessorEditor::ZxDistortionAudioProcessorEditor(ZxDistortionA
 
     presetsBar(p.getPresetManager(), lnf, *this, audioProcessor.apvts)
 {
-    int themeId = p.getSavedTheme();
+    Theme theme = lnf.themeManager->getCurrentTheme();
 
-    lnf.setTheme((Themes)themeId);
     setLookAndFeel(&lnf);
 
     PresetManager& pm = p.getPresetManager();
@@ -70,7 +69,7 @@ ZxDistortionAudioProcessorEditor::ZxDistortionAudioProcessorEditor(ZxDistortionA
     String vStr = ProjectInfo::versionString;
     pluginVersion.setText("Version: " + vStr, NotificationType::dontSendNotification);
     pluginVersion.setJustificationType(Justification::topRight);
-    pluginVersion.setColour(pluginVersion.textColourId, lnf.theme.mainText);
+    pluginVersion.setColour(pluginVersion.textColourId, theme.textMain);
 
     
 
@@ -88,14 +87,16 @@ ZxDistortionAudioProcessorEditor::~ZxDistortionAudioProcessorEditor()
 void ZxDistortionAudioProcessorEditor::paint (juce::Graphics& g)
 {
     // (Our component is opaque, so we must completely fill the background with a solid colour)
-    g.setColour(lnf.theme.bgMain);
+    auto theme = lnf.themeManager->getCurrentTheme();
+    
+    g.setColour(theme.mainBackground);
     g.fillAll();
 
     g.setTiledImageFill(img,0, 0, .1f);
     g.fillAll();
 
-    pluginName.setColour(pluginName.textColourId, lnf.theme.compFace);
-    title.setColour(title.textColourId, lnf.theme.compHighlight);
+    pluginName.setColour(pluginName.textColourId, theme.compFace);
+    title.setColour(title.textColourId, theme.compHighlight);
 }
 
 void ZxDistortionAudioProcessorEditor::resized()

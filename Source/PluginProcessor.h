@@ -92,15 +92,8 @@ public:
 
     PresetManager& getPresetManager() { return *presetManager;  }
 
-    int getSavedTheme();
     int themeToLoad{ 0 };
-    //int getSavedOversampling();
     int oversamplingToLoad{ 0 };
-
-    //dsp::Oversampling<float> os;
-    //std::unique_ptr<dsp::Oversampling<float>> os;
-    //dsp::AudioBlock<float> getOverSampleBuffer(dsp::ProcessContextReplacing<float> context);
-    //void downSample(dsp::ProcessContextReplacing<float> context);
 
 private:
     std::unique_ptr<PresetManager> presetManager;

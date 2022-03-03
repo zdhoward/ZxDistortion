@@ -226,9 +226,6 @@ void ZxDistortionAudioProcessor::getStateInformation (juce::MemoryBlock& destDat
     // as intermediaries to make it easy to save and load complex data.
     MemoryOutputStream mos(destData, true);
     apvts.state.writeToStream(mos);
-
-    int themeId = (int)apvts.state.getProperty("Theme");
-    int oversampling = (int)apvts.state.getProperty("Oversampling");
 }
 
 void ZxDistortionAudioProcessor::setStateInformation (const void* data, int sizeInBytes)
@@ -283,12 +280,4 @@ Settings ZxDistortionAudioProcessor::getSettings(AudioProcessorValueTreeState& a
 juce::AudioProcessor* JUCE_CALLTYPE createPluginFilter()
 {
     return new ZxDistortionAudioProcessor();
-}
-
-int ZxDistortionAudioProcessor::getSavedTheme()
-{
-    int themeId = apvts.state.getProperty("Theme");
-    //DBG("getSavedTheme apvts ThemeID: " << themeId);
-    //DBG("getSavedTheme apvts ThemeName: " << GetThemes().at((Themes)themeId));
-    return themeToLoad;
 }
