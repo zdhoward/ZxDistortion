@@ -10,6 +10,7 @@
 
 #include <JuceHeader.h>
 #include "../../Shared Resources/Library/Services/PresetManager.h"
+#include "../../Shared Resources/Library/Services/OversamplingManager.h"
 
 namespace Params
 {
@@ -97,6 +98,10 @@ public:
 
 private:
     std::unique_ptr<PresetManager> presetManager;
+
+    ScopedPointer<OversamplingManager> oversamplingManager;
+
+    dsp::ProcessSpec spec;
 
     AudioParameterFloat* drive;
     AudioParameterFloat* range;

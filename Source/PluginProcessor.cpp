@@ -27,6 +27,11 @@ ZxDistortionAudioProcessor::ZxDistortionAudioProcessor()
 
     presetManager = std::make_unique<PresetManager>(apvts);
 
+    //int oversamplingFactor = apvts.state.getProperty("Oversampling", 0);
+    //int oversamplingFactor = (int)apvts.state.getProperty("Oversampling", 0);
+    //DBG("OVERSAMPLING FACTOR: " + (String)oversamplingToLoad);
+    //oversamplingManager = new OversamplingManager(getTotalNumOutputChannels(), oversamplingFactor);
+
     using namespace Params;
     const auto& params = GetParams();
 
@@ -115,10 +120,13 @@ void ZxDistortionAudioProcessor::prepareToPlay (double sampleRate, int samplesPe
 {
     // Use this method as the place to do any pre-playback
     // initialisation that you need..
-    dsp::ProcessSpec spec;
+    
     spec.maximumBlockSize = samplesPerBlock;
     spec.numChannels = getTotalNumOutputChannels();
     spec.sampleRate = sampleRate;
+
+    //oversamplingManager->prepare(spec);
+    //setLatencySamples(oversamplingManager->getLatencyInSamples());
 
     dspGain.prepare(spec);
     dspGain.setRampDurationSeconds(0.05); //50ms
@@ -173,18 +181,21 @@ void ZxDistortionAudioProcessor::processBlock (juce::AudioBuffer<float>& buffer,
     for (auto i = totalNumInputChannels; i < totalNumOutputChannels; ++i)
         buffer.clear (i, 0, buffer.getNumSamples());
 
+    dsp::AudioBlock<float> inputBlock = dsp::AudioBlock<float>(buffer);
+    dsp::AudioBlock<float> oversampledBlock = oversamplingManager->upsample(inputBlock);
+
     updateState();
 
     auto settings = getSettings(apvts);
 
-    dspBlend.pushDrySamples(buffer);
+    dspBlend.pushDrySamples(inputBlock);
 
     for (int channel = 0; channel < totalNumInputChannels; ++channel)
     {
-        auto* channelData = buffer.getWritePointer(channel);
+        auto* channelData = oversampledBlock.getChannelPointer(channel);//buffer.getWritePointer(channel);
 
         // Distort
-        for (int sample = 0; sample < buffer.getNumSamples(); sample++)
+        for (int sample = 0; sample < oversampledBlock.getNumSamples(); sample++)
         {
             float cleanSignal = *channelData;
 
@@ -196,10 +207,12 @@ void ZxDistortionAudioProcessor::processBlock (juce::AudioBuffer<float>& buffer,
         }
     }
 
-    dspBlend.setWetMixProportion(settings.blend);
-    dspBlend.mixWetSamples(buffer);
+    oversamplingManager->downsample(inputBlock);
 
-    applyGain(buffer, dspGain);
+    dspBlend.setWetMixProportion(settings.blend);
+    dspBlend.mixWetSamples(inputBlock);
+
+    applyGain(inputBlock, dspGain);
 }
 
 void ZxDistortionAudioProcessor::updateState()
@@ -241,6 +254,15 @@ void ZxDistortionAudioProcessor::setStateInformation (const void* data, int size
 
     themeToLoad = (int)apvts.state.getProperty("Theme", 0);
     oversamplingToLoad = (int)apvts.state.getProperty("Oversampling", 0);
+
+    //DBG("OVERSAMPLING TO LOAD: " + (String)oversamplingToLoad);
+    int oversamplingFactor = (int)apvts.state.getProperty("Oversampling", 0) - 1;
+    DBG("OVERSAMPLING FACTOR: " + (String)oversamplingFactor);
+    oversamplingManager = new OversamplingManager(getTotalNumOutputChannels(), oversamplingFactor);
+    //oversamplingManager->
+    int blockSize = getBlockSize();
+    oversamplingManager->prepare(blockSize);
+    setLatencySamples(oversamplingManager->getLatencyInSamples());
 }
 
 AudioProcessorValueTreeState::ParameterLayout ZxDistortionAudioProcessor::createParameterLayout() {

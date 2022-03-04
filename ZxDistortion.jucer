@@ -10,6 +10,8 @@
       <FILE id="E0LZDb" name="SettingsPanel.h" compile="0" resource="0" file="../Shared Resources/Library/Components/SettingsPanel.h"/>
     </GROUP>
     <GROUP id="{F45F2D44-F257-CC46-4D12-C0474165BA50}" name="Services">
+      <FILE id="IhQ7QJ" name="OversamplingManager.h" compile="0" resource="0"
+            file="../Shared Resources/Library/Services/OversamplingManager.h"/>
       <FILE id="pEuZVF" name="PresetManager.cpp" compile="1" resource="0"
             file="../Shared Resources/Library/Services/PresetManager.cpp"/>
       <FILE id="Qq6gEw" name="PresetManager.h" compile="0" resource="0" file="../Shared Resources/Library/Services/PresetManager.h"/>
