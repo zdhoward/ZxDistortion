@@ -239,8 +239,8 @@ void ZxDistortionAudioProcessor::setStateInformation (const void* data, int size
         apvts.replaceState(tree);
     }
 
-    themeToLoad = (int)apvts.state.getProperty("Theme");
-    oversamplingToLoad = (int)apvts.state.getProperty("Oversampling");
+    themeToLoad = (int)apvts.state.getProperty("Theme", 0);
+    oversamplingToLoad = (int)apvts.state.getProperty("Oversampling", 0);
 }
 
 AudioProcessorValueTreeState::ParameterLayout ZxDistortionAudioProcessor::createParameterLayout() {
